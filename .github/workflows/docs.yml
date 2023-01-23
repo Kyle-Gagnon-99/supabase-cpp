@@ -19,7 +19,7 @@ jobs:
            && pip3 install breathe
            && pip3 install sphinx-sitemap
     - name: Checkout Repo
-      run: actions/checkout@1.0.0
+      run: actions/checkout@v3
     - name: Build Docs
       run: mkdir build
         && cd build
