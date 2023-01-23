@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - name: Requirments
-      run: apt install doxygen
-           && apt install sphinx-doc
+      run: sudo apt install -y doxygen
+           && sudo apt install -y sphinx-doc
            && pip3 install sphinx-rtd-thme
            && pip3 install breathe
            && pip3 install sphinx-sitemap
