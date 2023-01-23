@@ -1,3 +1,9 @@
 .supabase_info
 .vscode/
 supabase.code-workspace
+.DS_Store
+build/
+docs/xml
+_build/
+_static/
+_templates/

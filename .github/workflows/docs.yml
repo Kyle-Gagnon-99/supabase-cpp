@@ -1,0 +1,34 @@
+name: Docs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Requirments
+      run: apt install doxygen
+           && apt install sphinx-doc
+           && pip3 install sphinx-rtd-thme
+           && pip3 install breathe
+           && pip3 install sphinx-sitemap
+    - name: Checkout Repo
+      run: actions/checkout@1.0.0
+    - name: Build Docs
+      run: mkdir build
+        && cd build
+        && cmake ../
+        && make Sphinx
+        && touch build/docs/docs/.nojekyll
+    - name: Deploy Docs
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build/docs/docs/sphinx
